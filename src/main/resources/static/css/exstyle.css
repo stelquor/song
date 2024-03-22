@@ -1,0 +1,348 @@
+* {
+	text-align: center;
+	background-color: #0A1428;
+	margin: 0;
+	padding: 0;
+	color: orange;
+}
+
+body {
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+span label {
+	transition: color 0.3s ease; /* 글자 색상 변경 트랜지션 설정 */
+	cursor: pointer;
+}
+
+span label.active {
+	color: #00ff40 !important;
+	/* 선택된 글씨의 변경할 글자 색상 (important를 사용하여 우선순위 부여) */
+}
+
+button {
+	background-color: #1b5ac2;
+	color: #fff;
+	margin: 9px;
+	border-radius: 10px;
+	border: 0;
+	cursor: pointer;
+}
+
+nav * {
+	width: 50%;
+}
+
+img {
+	display: inline-block;
+	width: 50px;
+	border: 0;
+}
+
+td {
+	border-top: 1px solid grey; /* 오른쪽 변에만 스타일 지정 */
+	border-left: 1px solid grey; /* 오른쪽 변에만 스타일 지정 */
+	border-bottom: 2px solid black; /* 오른쪽 변에만 스타일 지정 */
+	border-right: 2px solid black; /* 오른쪽 변에만 스타일 지정 */
+	text-align: center;
+}
+
+a {
+	color: black;
+	/* 링크의 기본 색깔 */
+	text-decoration: none;
+	/* 밑줄 제거 */
+	transition: color 0.3s;
+	/* 색깔 변경에 애니메이션 효과를 줍니다. */
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	color: orange;
+}
+
+table {
+	padding: 10px;
+}
+
+table * {
+	margin: 0;
+	padding: 0;
+	background-color: #1E282D;
+}
+
+section * {
+	background-color: #1E282D;
+}
+
+td a img {
+	width: 40px;
+}
+
+td img {
+	width: 40px;
+	height: 40px;
+	margin-top: 6px;
+	margin-bottom: 3px
+}
+
+td p {
+	font-size: 1.4em;
+	text-align: left;
+	color: #DFF5DB;
+	background: linear-gradient(to right, green, #0A1428);
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.l-container {
+	width: 1100px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.width33 {
+	width: 33%;
+	background-color: #1E282D;
+}
+
+.width33 * {
+	background-color: inherit;
+}
+
+.width333 {
+	width: 33%;
+}
+
+.width333 * {
+	background-color: inherit;
+}
+
+.width67 {
+	width: 67%;
+	background-color: #1E282D;
+}
+
+.width67 * {
+	background-color: inherit;
+}
+
+.width678 {
+	width: 67%;
+}
+
+.width678 * {
+	background-color: inherit;
+}
+
+.width100 {
+	width: 100%;
+	display: flex;
+	list-style: none; /* 기본 목록 스타일 제거 */
+	padding: 0;
+	margin: 0;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	list-style: none; /* 왼쪽으로 정렬 */
+}
+
+.width100 li {
+	flex: 0 1 calc(16.6667% - 10px); /* 6개의 아이템이 가로로 꽉 차게 나열되도록 설정 */
+	box-sizing: border-box; /* 여백을 포함한 크기로 요소를 계산하도록 설정 */
+	margin: 0 5px 0 0;
+	text-align: center;
+}
+
+.width100 li img {
+	max-width: 100%;
+	height: auto;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.po {
+	opacity: 0;
+	position: absolute;
+	cursor: pointer;
+}
+
+.insert {
+	display: flex;
+}
+
+.insert * {
+	display: flex;
+	align-items: center; /*수직 중앙 정렬 */
+	width: 100%;
+	height: 100%;
+	border: 0;
+	top: 0;
+	padding: 10px;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+	z-index: 1;
+	color: white;
+	/* 	font-size: 18px; */
+	font-weight: bold;
+	background: none;
+}
+
+.insert button:hover {
+	text-decoration: underline;
+}
+
+.logo {
+	cursor: pointer;
+	width: auto;
+	height: 50px;
+}
+
+.logo * {
+	width: 100%;
+	height: 100%;
+}
+
+.header {
+	cursor: pointer;
+	width: 100%;
+	height: 50px;
+}
+
+.header * {
+	cursor: pointer;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	height: 40px;
+}
+
+.container {
+	display: flex;
+	width: 1200px;
+	margin: 0 auto;
+	font-size: 0.8em;
+}
+
+.head-container {
+	width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.tab-container {
+	display: flex;
+	flex-direction: column;
+	/* 세로로 배치 */
+	width: 50px;
+	/* 전체 탭 메뉴의 너비 */
+}
+
+.tab {
+	cursor: pointer;
+	width: 200px;
+}
+
+.tab-content {
+	padding: 10px;
+	display: none;
+	width: 100%;
+	/* 탭 내용의 너비를 100%로 설정하여 부모의 너비에 맞춤 */
+	box-sizing: border-box;
+	/* padding과 border를 포함하여 크기 계산 */
+}
+
+/* 첫 번째 탭의 내용은 페이지 로드 시에 보이도록 설정 */
+#tab1-content {
+	display: block;
+}
+
+.tab-flex {
+	display: flex;
+	width: 100%;
+}
+
+.divide {
+	width: 100%;
+	background-color: #0A1428;
+}
+
+.arrow-right {
+	position: relative;
+	display: inline-block;
+	margin: 0 0 10px 0;
+	/* 부등호와 텍스트 간의 간격 조절 */
+}
+
+.arrow-right::before {
+	content: '>';
+	/* 단일 부등호로 변경 */
+	color: #82D580;
+	/* 부등호의 색상 조절 */
+	font-size: 20px;
+	/* 부등호의 크기 조절 */
+}
+
+.flex {
+	display: flex;
+}
+
+.search {
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #1E282D;
+	color: orange;
+	width: 90%;
+	border: 2px solid #0A1428;
+	margin-bottom: 10px;
+}
+
+.counter {
+	justify-content: center;
+	margin: 6px;
+	border-radius: 50%
+}
+
+.set {
+	margin-bottom: 5px
+}
+
+.image-container {
+	position: relative;
+	display: inline-block; /* 블록 수준 요소로 설정하여 텍스트가 이미지의 오른쪽으로 가게 함 */
+}
+
+.overlay-text {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	border-radius: 50%;
+	color: white;
+	background-color: green;
+	width: 30px;
+	height: 25px;
+}
+
+.orange {
+	width: 100px;
+	height: 100px;
+	border-left: 3px solid orange;
+}
+
+.overlay-tip {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	border-radius: 50%;
+	color: white;
+	background-color: green;
+	width: 20px;
+	height: 20px;
+}

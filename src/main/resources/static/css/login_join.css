@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+* {
+	margin: 1px;
+	text-align: center;
+	background-color: #0A1428;
+	padding: 0;
+
+	color: orange;
+}
+
+.allBigBox {
+	width: 450px;
+	height: 500px;
+	position: relative;
+/* 	transition: margin-left 0.3s linear; */
+	margin: 0 auto;
+	border: 1px solid grey;
+}
+
+img{
+	height: 50px;
+	display: block;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.allBigBox>#ljBox {
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid grey;
+}
+
+.allBigBox.is-active {
+	margin:0 auto;
+}
+
+.btnDiv{
+	margin-top: 85%;
+	margin-right: 5%;
+	float: right;
+}
+
+#join{
+	display: none;
+}
+

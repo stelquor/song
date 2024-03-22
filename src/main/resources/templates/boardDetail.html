@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Board Detail</title>
+<!-- jquery -->
+<script src="//code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- summernote -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<!-- 썸머노트 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<link rel="stylesheet" href="/css/allStyle.css">
+<link rel="stylesheet" href="/css/board.css">
+</head>
+<body>
+	
+	<div class="allBigBox l-container">
+		
+		<header class="insert">
+			<div th:insert="~{header :: h1}" class="logo">로고</div>
+			<div th:insert="~{header :: ul}" class="header">헤더</div>
+		</header>
+		
+		<br>
+		
+		<th:block th:if="${session.member != null}">
+			<div class="loginBox">
+				<input type="hidden" id="m_id" name="m_id" th:value="${session.member.m_id}">
+				<p th:text="${session.member.m_nick}"></p>
+				<button onclick="location.href='/member/logout'">로그아웃</button>
+			</div>
+		</th:block>
+		<th:block th:if="${session.member == null}">
+			<div class="loginBox">
+				<input type="hidden" id="m_id" name="m_id">
+				<form action="/member/loginfrm">
+					<input type="hidden" name="page" th:value="'board/detail?b_num='+${bDto.b_num}">
+					<button type="submit">로그인</button>
+				</form>
+			</div>
+		</th:block>
+		
+		<br>
+		
+		<div class="allSmallBox">
+			<div class="bDtoDIV">
+				<th:block th:if="${bDto}!=null">
+					<p th:if="${bDto.unnamed == 1}"><b>익명 게시글</b></p><br>
+					
+					<p th:text=" ' &ensp;글번호&ensp; ' + ${bDto.b_num} + ' &ensp; '"></p><br>
+					<p th:text=" ' &ensp;제목&ensp; ' + ${bDto.b_title} + ' &ensp; '"></p><br>
+					
+					<th:block th:if="${bDto.unnamed == 1}">
+						<p th:text=" ' &ensp;작성자&ensp; ' + ${bDto.b_writerNick} + ' &ensp; '"></p><br>
+					</th:block>
+					<th:block th:if="${bDto.unnamed == 0}">
+						<p th:text=" ' &ensp;작성자&ensp; ' + ${bDto.b_writer} + ' &ensp; '"></p><br>
+					</th:block>
+					
+					<p th:text=" ' &ensp;작성날짜&ensp; ' + ${bDto.b_date} + ' &ensp; '"></p><br>
+					<p th:text=" ' &ensp;조회수&ensp; ' + ${bDto.b_view} + ' &ensp; '"></p><br>
+					<p th:utext=" ${bDto.b_contents} + ' &ensp; '"></p><br>
+					
+					<th:block th:if="${session.member}!=null">
+						<th:block th:if="${session.member.m_nick}==${bDto.b_writer}">
+							<button type="button" class="crudBtn" th:onclick="bUD([[${bDto.b_num}]],'U')">수정</button>
+							<button type="button" class="crudBtn" th:onclick="bUD([[${bDto.b_num}]],'D')">삭제</button>
+						</th:block>
+					</th:block>
+					<th:block th:if="${session.member}==null and ${bDto.unnamed == 1}" id="anoUDBTN">
+						<input type="password" id="unBPw" name="b_pw" class="input" placeholder="비밀번호 입력" maxlength="20"> <br>
+						<button type="button" class="crudBtn" th:onclick="unUD([[${bDto.b_num}]],'U')">수정</button>
+						<button type="button" class="crudBtn" th:onclick="unUD([[${bDto.b_num}]],'D')">삭제</button>
+					</th:block>
+				</th:block>
+			</div>
+			
+			<div class="cDtoDIV">
+				<table>
+					<th:block th:if="${cList}!=null" th:each="c:${cList}">
+						<tr>
+							<td></td>
+						</tr>
+					</th:block>
+				</table>
+			</div>
+			
+			
+			<button type="button" onclick="location.href = '/board/list?page=1'">리스트로 돌아가기</button>
+			
+		</div>
+	</div>
+	
+	<!-- 기본 js -->
+	<script th:inline="javascript" src="/js/boardDetail.js"></script>
+</body>
+</html>

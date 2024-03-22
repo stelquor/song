@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Board Update</title>
+<!-- jquery -->
+<script src="//code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- summernote -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<!-- 썸머노트 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<link rel="stylesheet" href="/css/allStyle.css">
+<link rel="stylesheet" href="/css/board.css">
+</head>
+<body>
+	
+	<div class="allBigBox l-container">
+		
+		<header class="insert">
+			<div th:insert="~{header :: h1}" class="logo">로고</div>
+			<div th:insert="~{header :: ul}" class="header">헤더</div>
+		</header>
+		
+		<div id="bDetailBox">
+
+			<form id="write_frm" method="get" onsubmit="return writeCheck()"
+				action="/board/updateSub">
+				<div id="bWrTitleDiv">
+					<input type="text" id="b_title" name="b_title" th:value="${bDto.b_title}"
+						placeholder="제목은 최대 15글자까지 적을 수 있습니다." style="width: 90%; height: 40px;">
+				</div>
+				<br>
+				<input type="hidden" id="b_num" name="b_num" th:value="${bDto.b_num}">
+				
+				<textarea id="summernote" name="b_contents" th:utext="${bDto.b_contents}"></textarea>
+				<br>
+
+				<div class="btnDiv">
+					<button type="button" onclick="location.href = document.referrer;">취소</button>
+					<button type="submit" class="crudBtn">올리기</button>
+				</div>
+			</form>
+
+		</div>
+		
+	</div>
+	
+	<!-- 기본 js -->
+	<script type="text/javascript" src="/js/boardUpdate.js"></script>
+</body>
+</html>

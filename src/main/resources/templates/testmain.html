@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/exstyle.css">
+</head>
+<body>
+<div th:if="${session.member != null}" style="float:right;">
+			<p style = "color:white"th:text="${session.member.m_nick}"></p>
+			<button onclick="location.href='/member/logout'">로그아웃</button>
+			</div>
+			<div th:if="${session.member == null}" style="float:right" >
+			<button onclick="location.href='/member/loginfrm'">로그인</button>
+			
+		</div>
+			<div class="l-container">
+	        <header class="insert">
+	        	<div th:insert="~{header :: h1}" class="logo">로고</div>
+	        	<div th:insert="~{header :: ul}" class="header">헤더</div>
+	        </header>
+</div>
+	<form action = "/champ/champinfo" >
+	<select name ="tier1" size="1">
+		<option value="아이언" selected>아이언</option>
+		<option value="브론즈" selected>브론즈</option>
+		<option value="실버" selected>실버</option>
+		<option value="골드" selected>골드</option>
+		<option value="플래티넘" selected>플래티넘</option>
+		<option value="에메랄드" selected>에메랄드</option>
+		<option value="다이아몬드" selected>다이아몬드</option>
+		<option value="마스터" selected>마스터</option>
+		<option value="그랜드마스터" selected>그랜드마스터</option>
+		<option value="챌린저" selected>챌린저</option>
+	</select>
+	
+	<input type = "text" name ="championName" placeholder="챔피언 이름" value = "Maokai">
+	
+	<select name ="teamPosition" size="1">
+		<option value="Top" selected>탑</option>
+		<option value="Jungle" selected>정글</option>
+		<option value="Middle" selected>미드</option>
+		<option value="Bottom" selected>바텀</option>
+		<option value="UTILITY" selected>서폿</option>
+	</select>
+	<input type = "submit" value = "챔피언 정보">
+	</form>
+<!--	<div id="test" class="width33">-->
+<!--                    <ul class="width100">-->
+<!--						<li th:each ="lane: ${champpi}">-->
+<!--                            <a th:href="@{/champ/champinfo/{champions}(champions=${lane.championName})/{lane}(lane=${lane.highest_pick_rate_position})}">-->
+<!--                                <img th:src="|https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/${lane.championName}.png|" alt="초상화">-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--        	        </ul>-->
+<!--                </div>-->
+	
+	
+<script type="text/javascript" src="/js/ex.js"></script> <!-- 라인별 챔피언 스크립트 -->
+</body>
+</html>

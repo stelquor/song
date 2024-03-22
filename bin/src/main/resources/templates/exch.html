@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/exstyle.css">
+<script src="//code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="head-container">
+        <header class="insert" style="border-bottom: 3px solid">
+            <div th:insert="~{header :: h1}" class="logo">로고</div>
+            <div th:insert="~{header :: ul}" class="header">헤더</div>
+        </header>
+        <header style="display: flex; justify-content: center">
+            <div class="image-container">
+                <img th:src="|https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/${championName}.png|"
+                    class="divide orange">
+            </div>
+            <!-- 탭 메뉴 시작 -->
+            <table style="background-color: #0A1428;">
+                <tr th:each="mostLine : ${mostLine}">
+                    <td onclick="showTab('top')" class="tab"><img th:src="@{/img/position/Diamond-Top.png}">
+                        <div th:utext="'탑&#10;' + ${mostLine.top_rate} + '%'"></div>
+                    </td>
+                    <td onclick="showTab('jungle')" class="tab"><img th:src="@{/img/position/Diamond-Jungle.png}">
+                        <div th:utext="'정글&#10;' + ${mostLine.jug_rate} + '%'"></div>
+                    </td>
+                    <td onclick="showTab('middle')" class="tab"><img th:src="@{/img/position/Diamond-Mid.png}">
+                        <div th:utext="'미드&#10;' + ${mostLine.mid_rate} + '%'"></div>
+                    </td>
+                    <td onclick="showTab('bottom')" class="tab"><img th:src="@{/img/position/Diamond-Bot.png}">
+                        <div th:utext="'바텀&#10;' + ${mostLine.bot_rate} + '%'"></div>
+                    </td>
+                    <td onclick="showTab('UTILITY')" class="tab"><img th:src="@{/img/position/Diamond-Support.png}">
+                        <div th:utext="'서폿&#10;' + ${mostLine.sup_rate} + '%'"></div>
+                    </td>
+                </tr>
+            </table>
+            <!-- 탭 메뉴 끝 -->
+            <div class="divide" style="display: grid; align-items: end">
+                <span th:insert="~{ex :: select}" class="divide" style="margin-top: 85px;"></span>
+                <p></p>
+            </div>
+        </header>
+    </div>
+    <div class="container">
+        <!-- 탭 1내용 시작 -->
+        <div id="bottom-content" class="tab-content">
+            <div class="tab-flex">
+                <section class="divide">
+                    <table class="divide">
+                        <tr>
+                            <td colspan="6">
+                                <p>룬 세팅</p>
+                            </td>
+                        </tr>
+                        <tr th:each="rune, Index : ${rune}" th:if="${Index.index lt 1}">
+                            <td>
+                                <div th:text="${rune['main_name'] == 8000 ? '정밀' :
+                                (rune['main_name'] == 8100 ? '지배' :
+                                (rune['main_name'] == 8200 ? '마법' :
+                                (rune['main_name'] == 8300 ? '영감' :
+                                (rune['main_name'] == 8400 ? '결의' : ''))))}"></div>
+                                <img
+                                    th:src="@{'https://opgg-static.akamaized.net/meta/images/lol/14.4.1/perkStyle/' + ${rune['main_name']} + '.png?image=q_auto,f_png,w_64,h_64&v=1707283412529'}"><br>
+                                <img
+                                    th:src="@{'https://opgg-static.akamaized.net/meta/images/lol/14.4.1/perk/' + ${rune['main_perks1']} + '.png?image=q_auto,f_png,w_64,h_64&v=1707283412529'}"><br>
+                                <img
+                                    th:src="@{'https://opgg-static.akamaized.net/meta/images/lol/14.4.1/perk/' + ${rune['main_perks2']} + '.png?image=q_auto,f_png,w_64,h_64&v=1707283412529'}"><br>
+                                <img
+                                    th:src="@{'https://opgg-static.akamaized.net/meta/images/lol/14.4.1/perk/' + ${rune['main_perks3']} + '.png?image=q_auto,f_png,w_64,h_64&v=1707283412529'}"><br>
+                                <img
+                                    th:src="@{'https://opgg-static.akamaized.net/meta/images/lol/14.4.1/perk/' + ${rune['main_perks4']} + '.png?image=q_auto,f_png,w_64,h_64&v=1707283412529'}">
+                            </td>
+                            <td style="vertical-align: top"><span th:text="${rune['sub_name'] == 8000 ? '정밀' :
+                                (rune['sub_name'] == 8100 ? '지배' :
+                                (rune['sub_name'] == 8200 ? '마법' :
+                                (rune['sub_name'] == 8300 ? '영감' :
+                                (rune['sub_name'] == 8400 ? '결의' : '땡'))))}"></span><br>
+                                <img
+                                    th:src="@{'https://opgg-static.akamaized.net/meta/images/lol/14.4.1/perkStyle/' + ${rune['sub_name']} + '.png?image=q_auto,f_png,w_64,h_64&v=1707283412529'}"><br>
+                                <img
+                                    th:src="@{'https://opgg-static.akamaized.net/meta/images/lol/14.4.1/perk/' + ${rune['sub_perks1']} + '.png?image=q_auto,f_png,w_64,h_64&v=1707283412529'}"><br>
+                                <img
+                                    th:src="@{'https://opgg-static.akamaized.net/meta/images/lol/14.4.1/perk/' + ${rune['sub_perks2']} + '.png?image=q_auto,f_png,w_64,h_64&v=1707283412529'}">
+                            </td>
+                            <td style="vertical-align: top"><img
+                                    th:src="@{'https://opgg-static.akamaized.net/meta/images/lol/perkShard/' + ${rune['stat_perks1']} + '.png?image=q_auto,f_png,w_64,h_64&v=1707283412529'}"><br>
+                                <img
+                                    th:src="@{'https://opgg-static.akamaized.net/meta/images/lol/perkShard/' + ${rune['stat_perks2']} + '.png?image=q_auto,f_png,w_64,h_64&v=1707283412529'}"><br>
+                                <img
+                                    th:src="@{'https://opgg-static.akamaized.net/meta/images/lol/perkShard/' + ${rune['stat_perks3']} + '.png?image=q_auto,f_png,w_64,h_64&v=1707283412529'}"><br>
+                                <br>
+                                <br>
+                                <div th:text="'승률 ' + ${rune['rune_win_percentage']} + '%'" style="font-size: 1.1em">
+                                </div>
+                                <div th:text="'픽률 ' + ${rune['rune_percentage']} + '%'" style="font-size: 1.1em"></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table th:alt="스킬" class="divide">
+                        <tr>
+                            <td colspan="4">
+                                <p>스킬 빌드</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">3렙 스킬 빌드</td>
+                            <td colspan="2">6렙 스킬 빌드</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" th:each="skill3lv, Index : ${skill3lv}" th:if="${Index.index lt 1}">
+                                <div>
+                                    <span class="image-container">
+                                        <img
+                                            th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/' + ${skill3lv.championName} + (${skill3lv.value1} == 1 ? 'Q' : (${skill3lv.value1} == 2 ? 'W' : (${skill3lv.value1} == 3 ? 'E' : 'R'))) + '.png'}">
+                                    </span>
+                                    <span class="arrow-right"></span>
+                                    <span class="image-container">
+                                        <img
+                                            th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/' + ${skill3lv.championName} + (${skill3lv.value2} == 1 ? 'Q' : (${skill3lv.value2} == 2 ? 'W' : (${skill3lv.value2} == 3 ? 'E' : 'R'))) + '.png'}">
+                                    </span>
+                                    <span class="arrow-right"></span>
+                                    <span class="image-container">
+                                        <img
+                                            th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/' + ${skill3lv.championName} + (${skill3lv.value3} == 1 ? 'Q' : (${skill3lv.value3} == 2 ? 'W' : (${skill3lv.value3} == 3 ? 'E' : 'R'))) + '.png'}">
+                                    </span>
+                                    <div th:text="'승률 ' + ${skill3lv.skill_win_rate} + '%'"></div>
+                                    <div th:text="'픽률 ' + ${skill3lv.skill_percentage} + '%'"></div>
+                                </div>
+                            </td>
+                            <td colspan="2" th:each="skill6lv, Index : ${skill6lv}" th:if="${Index.index lt 1}">
+                                <span class="image-container">
+                                    <img
+                                        th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/' + ${skill6lv.championName} + (${skill6lv.value1} == 1 ? 'Q' : (${skill6lv.value1} == 2 ? 'W' : (${skill6lv.value1} == 3 ? 'E' : 'R'))) + '.png'}">
+                                </span>
+                                <span class="arrow-right"></span>
+                                <span class="image-container">
+                                    <img
+                                        th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/' + ${skill6lv.championName} + (${skill6lv.value2} == 1 ? 'Q' : (${skill6lv.value2} == 2 ? 'W' : (${skill6lv.value2} == 3 ? 'E' : 'R'))) + '.png'}">
+                                </span>
+                                <span class="arrow-right"></span>
+                                <span class="image-container">
+                                    <img
+                                        th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/' + ${skill6lv.championName} + (${skill6lv.value3} == 1 ? 'Q' : (${skill6lv.value3} == 2 ? 'W' : (${skill6lv.value3} == 3 ? 'E' : 'R'))) + '.png'}">
+                                </span>
+                                <span class="arrow-right"></span>
+                                <span class="image-container">
+                                    <img
+                                        th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/' + ${skill6lv.championName} + (${skill6lv.value4} == 1 ? 'Q' : (${skill6lv.value4} == 2 ? 'W' : (${skill6lv.value4} == 3 ? 'E' : 'R'))) + '.png'}">
+                                </span>
+                                <span class="arrow-right"></span>
+                                <span class="image-container">
+                                    <img
+                                        th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/' + ${skill6lv.championName} + (${skill6lv.value5} == 1 ? 'Q' : (${skill6lv.value5} == 2 ? 'W' : (${skill6lv.value5} == 3 ? 'E' : 'R'))) + '.png'}">
+                                </span>
+                                <span class="arrow-right"></span>
+                                <span class="image-container">
+                                    <img
+                                        th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/' + ${skill6lv.championName} + (${skill6lv.value6} == 1 ? 'Q' : (${skill6lv.value6} == 2 ? 'W' : (${skill6lv.value6} == 3 ? 'E' : 'R'))) + '.png'}">
+                                </span>
+                                <div th:text="'승률 ' + ${skill6lv.skill_win_rate} + '%'"></div>
+                                <div th:text="'픽률 ' + ${skill6lv.skill_percentage} + '%'"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+                <section class="divide">
+                    <div class="tab-flex">
+                        <div th:alt="왼쪽" class="divide">
+                            <table class="divide">
+                                <tr>
+                                    <td colspan="2">
+                                        <p>소환사 주문</p>
+                                    </td>
+                                </tr>
+                                <tr th:each="spell, Index : ${spell}" th:if="${Index.index lt 1}">
+                                    <td colspan="1"><img
+                                            th:src="@{|https://opgg-static.akamaized.net/meta/images/lol/14.4.1/spell/${spell['summoner1Id']}.png?image=q_auto,f_webp,w_64,h_64&v=1708681571653|}">
+                                        <img
+                                            th:src="@{|https://opgg-static.akamaized.net/meta/images/lol/14.4.1/spell/${spell['summoner2Id']}.png?image=q_auto,f_webp,w_64,h_64&v=1708681571653|}">
+                                    </td>
+                                    <td th:utext="'승률 ' + ${spell['spell_win_percentage']} + '%' + '<br>픽률 ' + ${spell['spell_rate']} + '%'"
+                                        colspan="1"></td>
+                                </tr>
+                            </table>
+                            <table class="divide">
+                                <tr>
+                                    <td colspan="2">
+                                        <p>추천 빌드</p>
+                                    </td>
+                                </tr>
+                                <tr th:each="core3, Index : ${core3}" th:if="${Index.index lt 1}">
+                                    <td colspan="1"><img
+                                            th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/item/'+ ${core3.core1} +'.png'}">
+                                        <span class="arrow-right"></span> <img
+                                            th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/item/'+ ${core3.core2} +'.png'}">
+                                        <span class="arrow-right"></span> <img
+                                            th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/item/'+ ${core3.core3} +'.png'}">
+                                    </td>
+                                    <td th:utext="'승률 ' + ${core3['core3_win_percentage']} + '%' + '<br>픽률 ' + ${core3['core3_percentage']} + '%'"
+                                        colspan="1"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div th:alt="오른쪽" class="divide">
+                            <table class="divide">
+                                <tr>
+                                    <td colspan="2">
+                                        <p>시작 아이템</p>
+                                    </td>
+                                </tr>
+                                <tr th:each="sitem, Index : ${sitem}" th:if="${Index.index lt 1}">
+                                    <td colspan="1"><img
+                                            th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/item/'+ ${sitem['sitem1']} +'.png'}">
+                                        <img
+                                            th:src="@{https://ddragon.leagueoflegends.com/cdn/14.4.1/img/item/2003.png}">
+                                    </td>
+                                    <td th:utext="'승률 ' + ${sitem['sitem_win_rate']} + '%' + '<br>픽률 ' + ${sitem['sitem_percentage']} + '%'"
+                                        colspan="1"></td>
+                                </tr>
+                            </table>
+                            <table class="divide">
+                                <tr>
+                                    <td colspan="2">
+                                        <p>신발</p>
+                                    </td>
+                                </tr>
+                                <tr th:each="shoes, Index : ${shoes}" th:if="${Index.index lt 1}">
+                                    <td colspan="1"><img
+                                            th:src="@{'https://ddragon.leagueoflegends.com/cdn/14.4.1/img/item/'+ ${shoes.shoes} +'.png'}">
+                                    </td>
+                                    <td th:utext="'승률 ' + ${shoes['shoes_win_percentage']} + '%' + '<br>픽률 ' + ${shoes['shoes_pickRate']} + '%'"
+                                        colspan="1"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <table th:alt="카운터" class="divide">
+                        <tr>
+                            <td colspan="10">
+                                <p>카운터</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">상대하기 쉬운 상대</td>
+                            <td colspan="5">상대하기 어려운 상대</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="width: 50%"><span th:each="counterDESC, Index : ${counterDESC}"
+                                    th:if="${Index.index lt 5}"> <img alt="초상화"
+                                        th:src="'https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/' + ${counterDESC.enemy_champ_en} + '.png'"
+                                        class="counter">
+                                </span></td>
+                            <td colspan="5" style="width: 50%"><span th:each="counter, Index : ${counter}"
+                                    th:if="${Index.index lt 5}"> <img alt="초상화"
+                                        th:src="'https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/' + ${counter.enemy_champ_en} + '.png'"
+                                        class="counter">
+                                </span></td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </div>
+        <!-- 탭1 내용 끝 -->
+        <!--         탭2 내용 시작 -->
+        <div id="jungle-content" class="tab-content">2번쨰</div>
+        <!--         탭2 내용 끝 -->
+        <!--         탭3 내용 시작 -->
+        <div id="middle-content" class="tab-content">3번쨰</div>
+        <!--         탭3 내용 끝 -->
+        <!--         탭4 내용 시작 -->
+        <div id="bottom-content" class="tab-content">4번쨰</div>
+        <!--         탭4 내용 끝 -->
+        <!--         탭5 내용 시작 -->
+        <div id="UTILITY-content" class="tab-content">5번쨰</div>
+        <!--         탭5 내용 끝 -->
+    </div>
+</body>
+<script type="text/javascript" src="/js/exch.js"></script>
+
+</html>

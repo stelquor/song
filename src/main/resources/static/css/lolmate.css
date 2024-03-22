@@ -1,0 +1,285 @@
+@charset "UTF-8";
+
+
+.left-align{
+	text-align: left;
+}
+
+#dmBtn{
+	float: right;
+	margin-right: 3%;
+}
+
+.sePoDiv{
+	display: inline-block;
+    vertical-align: middle;
+}
+
+.serchMateDiv,#dmBtn {
+    display: inline-block; /* 버튼을 블록 요소로 설정하여 한 줄에 하나의 요소만 표시 */
+    vertical-align: middle;
+}
+
+
+input[disabled] {
+    background-color: #091428;
+}
+
+
+#lmInfoTab{
+	display: none;
+}
+
+
+.lmListT, #mLAppList{
+	border: 1px solid black;
+	text-align: center;
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0 5px;
+}
+/* #mLAppList{ */
+/* 	width:80%; */
+/*  	border: 1px solid black; */
+/*  	padding: 1% 0 1% 0; */
+/*  	margin: auto; */
+/*  	text-align: center; */
+/* } */
+
+.trF{
+	width: auto;
+}
+
+.trF>th{
+	padding: 1% 0 1% 0;
+}
+
+.lmListDiv{
+	margin: auto;
+	margin-top: 1%;
+	padding: 1% 0 1% 0;
+	border: 1px solid black;
+	text-align: center;
+	width: 99%;
+}
+
+.positionImg{
+	float: left;
+    width:30px;
+    padding-bottom: 30px;
+    background-size: cover;
+}
+label{
+	display: inline-block;
+}
+.poRadio,.myPoRadio,.findPoRadio{
+	opacity: 0;
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+
+
+
+.pAll,.Top,.Jungle,.Mid,.Support,.Bot,.img{
+	width: 30px;
+	padding-bottom: 30px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size : cover;
+	display: inline-block;
+}
+.pAll{ background-image: url('../img/position/Diamond-pAll.png'); }
+.Top{ background-image: url('../img/position/Silver-Top.png'); }
+.Jungle{ background-image: url('../img/position/Silver-Jungle.png'); }
+.Mid{ background-image: url('../img/position/Silver-Mid.png'); }
+.Support{ background-image: url('../img/position/Silver-Support.png'); }
+.Bot{ background-image: url('../img/position/Silver-Bot.png'); }
+
+.npAll{ background-image: url('../img/position/Silver-pAll.png'); }
+.selTop{ background-image: url('../img/position/Diamond-Top.png'); }
+.selJungle{ background-image: url('../img/position/Diamond-Jungle.png'); }
+.selMid{ background-image: url('../img/position/Diamond-Mid.png'); }
+.selSupport{ background-image: url('../img/position/Diamond-Support.png'); }
+.selBot{ background-image: url('../img/position/Diamond-Bot.png'); }
+
+.lmTabChoice{
+	width: 400px;
+	height: 50px;
+	text-align: left;
+	vertical-align: middle;
+}
+.lmTabChoice div{
+	width: 30%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	display: inline-block;
+}
+#lmListChoice{
+	background-color: olive;
+}
+#lmInfoChoice{
+	background-color: teal;
+}
+
+#lmNotionDiv{
+	width: 100%;
+	height: 30%;
+	line-height: 30px;
+	padding: 20px;
+	background-color: #091428;
+	text-align: center;
+}
+#lmNotionDiv h3,h2{
+	display: inline-block;
+	margin: 0;
+}
+#lmNotionDiv p{
+	margin: 0;
+	margin-top: 5px;
+}
+
+.lmWrite_h5{
+	margin: 0;
+	padding: 0;
+}
+
+
+#lmDMContent2{
+	margin: auto;
+}
+
+
+.floatLeft{
+	float: left;
+	padding: 0 10%;
+}
+
+
+#chat-div{
+	overflow: auto;
+	padding: auto;
+	width: 100%;
+	height: 180px;
+}
+#chat-div>*{
+	margin-bottom: 10px;
+}
+
+.myAppendChat>div{
+	right: 10px;
+	text-align: right;
+ 	background-color: #005A82;
+ 	color: #A09B8C;
+ 	display: inline-block;
+ 	margin-left: 35%;
+}
+.appAppendChat>div{
+	left: 10px;
+	text-align: left;
+ 	background-color: #3C3C41;
+ 	color: #A09B8C;
+ 	margin-right: 30%;
+}
+.myAppendChat>div,.appAppendChat>div{
+ 	padding: 2%;
+ 	border: 1px solid black;
+ 	height: 90%;
+ 	width: 60%;
+}
+.myAppendChat>h5{
+	text-align: right;
+	margin: 0 auto;
+	margin-right: 15px;
+}
+.appAppendChat>h5{
+	text-align: left;
+	margin: 0 auto;
+	margin-left: 10px;
+}
+
+#chat-box{
+	position: absolute;
+	bottom: 0;
+	width: 95%;
+	margin: 2% auto;
+}
+#chat-box > textarea {
+	resize: none;
+	height: 60px;
+	width: 98%;
+	background-color: #1E2328;
+	color: #C89B3C;
+	font-size: 1.2em;
+	padding: 10px;
+	overflow-y: auto;
+}
+#chat-box > button {
+	position: absolute;
+	height: 55px;
+	width: 6%;
+	top: 5px;
+	right: 0px;
+}
+#chat-backBtn{
+	height: 30px;
+	width: 30px;
+	float: left;
+	margin: 5px;
+	margin-left: 10px;
+}
+.textDiv{
+	margin: auto;
+	text-align: center;
+	height: 250px;
+}
+
+#lmAppList{
+	overflow: auto;
+	padding: auto;
+	width: 100%;
+	height: 250px;
+}
+.lmAppDiv>*{
+	background-color: transparent;
+}
+.lmAppDiv{
+	border: 1px solid black;
+	background-color: #1E2328;
+	color: #C89B3C;
+	height: 50px;
+	align-items: center;
+	display: flex;
+}
+.lmAppDiv > h5{
+	text-align: right;
+	color: #C8AA6E;
+	bottom: 0;
+	margin: 0 auto;
+    margin-right: 3%;
+}
+.lmAppDiv > div{
+	float: left;
+	text-align: center;
+	font-size: 1.4em;
+	margin-right: 80px;
+	padding-left: 20px;
+}
+#lmCDBtnDiv > button{
+/* 	float: right; */
+/* 	margin-right: 10px; */
+	bottom:0px;
+}
+
+.noText{
+	margin: auto;
+}
+
+.chatTextDiv{
+	font-size: 1.1em !important;
+}
+
+
+
